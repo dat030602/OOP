@@ -24,6 +24,7 @@
     <ProjectGuid>{9bd026ff-506d-4d1d-a16a-5a9a1e948dcf}</ProjectGuid>
     <RootNamespace>Proj2</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
+    <ProjectName>CrossingStreet</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -139,13 +140,29 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Animal.cpp" />
+    <ClCompile Include="Bird.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="Console.cpp" />
+    <ClCompile Include="Dinausor.cpp" />
     <ClCompile Include="draw.cpp" />
+    <ClCompile Include="Game.cpp" />
     <ClCompile Include="GoToXY.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="People.cpp" />
+    <ClCompile Include="Truck.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Animal.h" />
+    <ClInclude Include="Bird.h" />
+    <ClInclude Include="Car.h" />
+    <ClInclude Include="Dinausor.h" />
+    <ClInclude Include="Game.h" />
     <ClInclude Include="MainHeader.h" />
+    <ClInclude Include="People.h" />
+    <ClInclude Include="Truck.h" />
+    <ClInclude Include="Vehicle.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
