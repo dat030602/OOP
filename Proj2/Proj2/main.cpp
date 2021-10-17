@@ -39,7 +39,7 @@ const char People::form[][3] = {
 };
 //Vị trí các đường kẻ trong game
 //khoảng cách giữa các đường kẻ ngang là 4, dọc là 70
-const int Game::posY[] = { 30,26,22, 18, 14};
+const int Game::posY[] = { 30,26,22, 18, 14 };
 //biến lựa chọn (có thể là menu hoặc di chuyển
 char MOVING;
 //khởi tạo class game
@@ -78,8 +78,169 @@ void runGame()
 
     }
 }
+
+/////////////////////////////////Ham tu them/////////////////////////////////////
+
+void Loading()
+{
+    //SetConsoleCP(65001);
+    //SetConsoleOutputCP(65001);
+    //Loading game
+    srand(NULL);
+    GotoXY(56, 20);
+    cout << "LOADING";
+
+
+    int i = 3;
+    GotoXY(26, i++);
+    cout << " $$$$$$\\                                           $$\\";
+    GotoXY(26, i++);
+    cout << "$$  __$$\\                                         \\__ |";
+    GotoXY(26, i++);
+    cout << "$$ /  \\__|  $$$$$$\\   $$$$$$\\   $$$$$$$\\  $$$$$$$\\ $$\\   $$$$$$$\\    $$$$$$\\";
+    GotoXY(26, i++);
+    cout << "$$ |       $$  __$$\\ $$  __$$\\ $$  _____|$$  _____|$$ |  $$  __$$\\  $$  __$$\\";
+    GotoXY(26, i++);
+    cout << "$$ |       $$ |  \\__|$$ / $$ | \\$$$$$$\\  \\$$$$$$\\  $$ |  $$ |  $$ |  $$ / $$ |";
+    GotoXY(26, i++);
+    cout << "$$ |   $$\\ $$ |      $$ | $$ | \\____$$\\  \\____ $$\\ $$ |  $$ |  $$ |  $$ | $$ |";
+    GotoXY(26, i++);
+    cout << "\\$$$$$$  | $$ |      \\$$$$$$ | $$$$$$$ | $$$$$$$  |$$ |  $$ |  $$ | \\$$$$$$$ |";
+    GotoXY(26, i++);
+    cout << "\\______ / \\__|       \\______/ \\_______/ \\_______/ \\__|  \\__|  \\__ |  \\____$$ |";
+    GotoXY(26, i++);
+    cout << "                                                                    $$\\   $$ |";
+    GotoXY(26, i++);
+    cout << "                                                                    \\$$$$$$  |";
+    GotoXY(26, i++);
+    cout << "                                                                     \\______ /";
+
+
+    GotoXY(28, 25);
+    //cout << "│";
+    cout << char(179);
+    GotoXY(92, 25);
+    //cout << "│";
+    cout << char(179);
+    GotoXY(29, 25);
+    for (int i = 29; i < 92; i++) {
+        int a = rand() % 50;
+        Sleep(a);
+        //cout << "█";
+        cout << char(219);
+    }
+}
+
+void textColor(int x)
+{
+    HANDLE mau;
+    mau = GetStdHandle(STD_OUTPUT_HANDLE);
+    SetConsoleTextAttribute(mau, x);
+}
+
+int menu() {
+    system("cls");
+    int Choose = 1;
+    char press;
+    do {
+        switch (Choose)
+        {
+        case 1:
+        {
+            GotoXY(48, 15); textColor(228);
+            cout << ">>    N_E_W   G_A_M_E    <<";
+            GotoXY(48, 17); textColor(232);
+            cout << "     L_O_A_D   G_A_M_E     ";
+            GotoXY(48, 19); textColor(232);
+            cout << "    R_A_N_K   B_O_A_R_D    ";
+            GotoXY(48, 21); textColor(232);
+            cout << "     I_N_T_R_O_D_U_C_E     ";
+            GotoXY(48, 23); textColor(232);
+            cout << "     E_X_I_T   G_A_M_E     ";
+            break;
+        }
+        case 2:
+        {
+            GotoXY(48, 15); textColor(232);
+            cout << "      N_E_W   G_A_M_E      ";
+            GotoXY(48, 17); textColor(228);
+            cout << ">>   L_O_A_D   G_A_M_E   <<";
+            GotoXY(48, 19); textColor(232);
+            cout << "    R_A_N_K   B_O_A_R_D    ";
+            GotoXY(48, 21); textColor(232);
+            cout << "     I_N_T_R_O_D_U_C_E     ";
+            GotoXY(48, 23); textColor(232);
+            cout << "     E_X_I_T   G_A_M_E     ";
+            break;
+        }
+        case 3:
+        {
+            GotoXY(48, 15); textColor(232);
+            cout << "      N_E_W   G_A_M_E      ";
+            GotoXY(48, 17); textColor(232);
+            cout << "     L_O_A_D   G_A_M_E     ";
+            GotoXY(48, 19); textColor(228);
+            cout << ">>  R_A_N_K   B_O_A_R_D  <<";
+            GotoXY(48, 21); textColor(232);
+            cout << "     I_N_T_R_O_D_U_C_E     ";
+            GotoXY(48, 23); textColor(232);
+            cout << "     E_X_I_T   G_A_M_E     ";
+            break;
+        }
+        case 4:
+        {
+            GotoXY(48, 15); textColor(232);
+            cout << "      N_E_W   G_A_M_E      ";
+            GotoXY(48, 17); textColor(232);
+            cout << "     L_O_A_D   G_A_M_E     ";
+            GotoXY(48, 19); textColor(232);
+            cout << "    R_A_N_K   B_O_A_R_D    ";
+            GotoXY(48, 21); textColor(228);
+            cout << ">>   I_N_T_R_O_D_U_C_E   <<";
+            GotoXY(48, 23); textColor(232);
+            cout << "     E_X_I_T   G_A_M_E     ";
+            break;
+        }
+        case 5:
+        {
+            GotoXY(48, 15); textColor(232);
+            cout << "      N_E_W   G_A_M_E      ";
+            GotoXY(48, 17); textColor(232);
+            cout << "     L_O_A_D   G_A_M_E     ";
+            GotoXY(48, 19); textColor(232);
+            cout << "    R_A_N_K   B_O_A_R_D    ";
+            GotoXY(48, 21); textColor(232);
+            cout << "     I_N_T_R_O_D_U_C_E     ";
+            GotoXY(48, 23); textColor(228);
+            cout << ">>   E_X_I_T   G_A_M_E   <<";
+            break;
+        }
+        }
+        press = toupper(_getch());
+        if (press == 'W')
+        {
+            if (Choose != 1) Choose--;
+        }
+        if (press == 'S')
+        {
+            if (Choose != 5) Choose++;
+        }
+    } while (press != 13);
+    system("cls");
+    system("color e4");
+    return Choose;
+}
+
+void PauseGame(HANDLE t)
+{
+    SuspendThread(t);
+}
+
+/////////////////////////////////Ham tu them/////////////////////////////////////
+
 int main()
 {
+    system("color e4");
     //setup khung
     HWND console = GetConsoleWindow();
     RECT r;
@@ -92,40 +253,63 @@ int main()
     //vẽ menu trước khi vào game (hiện tại là chưa làm)
     // ....
 
+    Loading();  //ms them
+    system("cls");//ms them
+    int choose = menu();//ms them
+    int temp;//ms them
+    while (1) {
+        switch (choose)
+        {
+        case 1: {
 
-    //vẽ khung trò chơi và menu
-    drawConsole(40, 10);
-    //Tọa độ khung menu:
-    //Menu Trái: 3, 13
-    //Menu phải: 40, 13
-    //Chiều ngang: 30
+            //vẽ khung trò chơi và menu
 
-    drawMenu(120, 13);
+            drawConsole(40, 10);
+            //Tọa độ khung menu:
+            //Menu Trái: 3, 13
+            //Menu phải: 40, 13
+            //Chiều ngang: 30
 
-    GotoXY(70, 3);
-    cout << "CROSSING STREET";
-    GotoXY(4, 14);
-    cout << "Menu: load, save...";
-    GotoXY(121, 14);
-    cout << "Score";
-    GotoXY(121, 22);
-    cout << "Level";
-    GotoXY(136, 22);
-    cout << "High Score";
+            drawMenu(120, 13);
 
-    //bắt đầu game
-    g.startGame();
-    thread t1(runGame);
-    //reset game sẽ được dùng lại mỗi khi new game hoặc mở load game,
-    //số xe, thú tăng theo lv mà người đang chơi, ở đây là 1 nên có 2 xe, thú
-    //công thức thì xem kỹ hơn ở trong hàm
-    g.resetGame(1);
-    while (1)
-    {
-        MOVING = toupper(_getch());
-        //thêm các menu ở đây
-        //tài liệu đồ án thầy có cho 1 số gợi ý về menu
-        //để dễ làm nên tui xóa thêm rồi
-        //menu: load, save, pause game hay gì đó sẽ thêm ở đây
+            GotoXY(70, 3);
+            cout << "CROSSING STREET";
+            GotoXY(4, 14);
+            cout << "Menu: load, save...";
+            GotoXY(121, 14);
+            cout << "Score";
+            GotoXY(121, 22);
+            cout << "Level";
+            GotoXY(136, 22);
+            cout << "High Score";
+
+            //bắt đầu game
+            g.startGame();
+            thread t1(runGame);
+            //HANDLE handle_t1 = t1.native_handle();
+
+            //reset game sẽ được dùng lại mỗi khi new game hoặc mở load game,
+            //số xe, thú tăng theo lv mà người đang chơi, ở đây là 1 nên có 2 xe, thú
+            //công thức thì xem kỹ hơn ở trong hàm
+            g.resetGame(1);
+            while (1)
+            {
+                MOVING = toupper(_getch());
+                //thêm các menu ở đây
+                //tài liệu đồ án thầy có cho 1 số gợi ý về menu
+                //để dễ làm nên tui xóa thêm rồi
+                //menu: load, save, pause game hay gì đó sẽ thêm ở đây
+
+                if (MOVING == 27) {
+                    choose = menu();
+                }
+
+            }
+            /*PauseGame(handle_t1);
+            choose = menu();*/
+        }
+              break;
+        }
+
     }
 }

@@ -1,4 +1,4 @@
-#include "Game.h"
+﻿#include "Game.h"
 #include "Animal.h"
 #include "People.h"
 #include "Vehicle.h"
@@ -50,17 +50,16 @@ void Game::resetGame(int level)
 	m_people = new People((RIGHT + LEFT) / 2, BOTTOM);
 
 	int interval = (level - 1) / 3 + 1;
-	int numOfVehicles = interval + 1;
-	int carDistance = (RIGHT - LEFT - 1) / numOfVehicles;
-	int laneDistance = 4;
+	int numOfVehicles = interval + 1;// số lượng xe
+	int carDistance = (RIGHT - LEFT - 1) / numOfVehicles; // khoảng cách xe
+	int laneDistance = 4; // khoảng cách giữa 2 làm
 
 	int row = BOTTOM - laneDistance;
 	int col = LEFT + 1;
 	num = numOfVehicles;
 	m_truck = new Truck[num];
 	for (int i = 0; i < num; ++i, col += carDistance)
-		m_truck[i].setPos(col, row);
-
+	m_truck[i].setPos(col, row);
 
 	row -= laneDistance;
 	col = (((LEFT + 1) << 1) + carDistance) >> 1;
