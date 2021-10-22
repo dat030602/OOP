@@ -5,6 +5,8 @@
 #include <stdio.h>
 #include <thread>
 #include <ctime>
+#include <cstdlib>
+#include <algorithm>
 
 using namespace std;
 

@@ -1,6 +1,7 @@
 ﻿C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Microsoft\VC\v160\Microsoft.CppBuild.targets(513,5): warning MSB8028: The intermediate directory (x64\Debug\) contains files shared from another project (Proj2.vcxproj).  This can lead to incorrect clean and rebuild behavior.
   main.cpp
-D:\code\c++\Proj2\Proj2\People.h(31,44): warning C4042: 'posY': has bad storage class
+D:\code\c++\Proj2\Proj2\People.h(33,44): warning C4042: 'posY': has bad storage class
+D:\code\c++\Proj2\Proj2\People.h(49,13): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 D:\code\c++\Proj2\Proj2\main.cpp(13,10): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
 D:\code\c++\Proj2\Proj2\main.cpp(13,10): warning C4309: 'initializing': truncation of constant value
 D:\code\c++\Proj2\Proj2\main.cpp(13,31): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
@@ -61,5 +62,5 @@ D:\code\c++\Proj2\Proj2\main.cpp(36,11): warning C4838: conversion from 'int' to
 D:\code\c++\Proj2\Proj2\main.cpp(36,11): warning C4309: 'initializing': truncation of constant value
 D:\code\c++\Proj2\Proj2\main.cpp(37,10): warning C4838: conversion from 'int' to 'const char' requires a narrowing conversion
 D:\code\c++\Proj2\Proj2\main.cpp(37,10): warning C4309: 'initializing': truncation of constant value
-D:\code\c++\Proj2\Proj2\main.cpp(259,9): warning C4101: 'temp': unreferenced local variable
+D:\code\c++\Proj2\Proj2\main.cpp(264,9): warning C4101: 'temp': unreferenced local variable
   Proj2.vcxproj -> D:\code\c++\Proj2\x64\Debug\CrossingStreet.exe

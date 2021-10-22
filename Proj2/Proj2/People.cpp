@@ -146,12 +146,12 @@ bool People::isImpact(const Animal* obj, int num, bool animal)
 		w = Bird::width;
 	else
 		w = Dinausor::width;
-	if (y <= mY && y > mY - People::height)
+	if (y <= mY +- 2 && y > mY - People::height)
 	{
 		for (int i = 0; i < num; i++)
 		{
 			x = obj[i].X();
-			if (mX >= x && mX < x + w)
+			if (mX >= x - 2 && mX < x + w)
 			{
 				mState = false;
 				return true;
@@ -168,12 +168,12 @@ bool People::isImpact(const Vehicle* obj, int num, bool vehicle)
 		w = Truck::width;
 	else
 		w = Car::width;
-	if (y <= mY && y > mY - People::height)
+	if (y <= mY + 2 && y > mY - People::height)
 	{
 		for (int i = 0; i < num; i++)
 		{
 			x = obj[i].X();
-			if (mX >= x && mX < x + w)
+			if (mX >= x - 2 && mX < x + w)
 			{
 				mState = false;
 				return true;

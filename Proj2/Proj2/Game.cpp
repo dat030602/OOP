@@ -10,6 +10,8 @@
 Game::Game()
 {
 	srand(time(NULL));
+	score = highScore = 0;
+	m_currentLevel = 1;
 	resetGame(1);
 };
 Game::Game(int level)
@@ -17,9 +19,28 @@ Game::Game(int level)
 	srand(time(NULL));
 	resetGame(level);
 };
-void Game::drawGame(char key)
+void Game::drawGame(char key, int &flashing)
 {
 	int i;
+	if (isImpactPoint())
+	{
+		flashing = 0;
+		score += 10;
+	}
+	if (flashing == 0)
+	{
+		updateScore();
+		m_people->setPos();
+		m_people->draw();
+	}
+	else if (flashing % 6 == 0)
+	{
+		m_people->clear();
+		if (flashing == 60)
+			flashing = 1;
+	}
+	else if (flashing % 3 == 0)
+		m_people->draw();
 	for (i = 0; i < num; ++i)
 	{
 		m_truck[i].selfDraw();
@@ -45,43 +66,47 @@ Game::~Game()
 void Game::resetGame(int level)
 {
 	clearGame();
+	GotoXY(123, 23);
 	m_currentLevel = level;
+	cout << level;
+	if (level > 1)
+		score += 20;
+	updateScore();
 	is_running = true;
 	m_people = new People((RIGHT + LEFT) / 2, BOTTOM);
 
 	int interval = (level - 1) / 3 + 1;
 	int numOfVehicles = interval + 1;// số lượng xe
-	int carDistance = (RIGHT - LEFT - 1) / numOfVehicles; // khoảng cách xe
-	int laneDistance = 4; // khoảng cách giữa 2 làm
+	int distance = (RIGHT - LEFT - 1) / numOfVehicles; // khoảng cách xe
+	int laneDistance = 4; // khoảng cách giữa 2 làn
 
 	int row = BOTTOM - laneDistance;
 	int col = LEFT + 1;
 	num = numOfVehicles;
 	m_truck = new Truck[num];
-	for (int i = 0; i < num; ++i, col += carDistance)
+	for (int i = 0; i < num; ++i, col += distance)
 	m_truck[i].setPos(col, row);
 
 	row -= laneDistance;
-	col = (((LEFT + 1) << 1) + carDistance) >> 1;
+	col = (((LEFT + 1) << 1) + distance) >> 1;
 	m_car = new Car[num];
-	for (int i = 0; i < num; ++i, col += carDistance)
+	for (int i = 0; i < num; ++i, col += distance)
 		m_car[i].setPos(col, row);
 
 	row -= laneDistance;
 	col = LEFT + 1;
 	m_dinausor = new Dinausor[num];
-	for (int i = 0; i < num; ++i, col += carDistance)
+	for (int i = 0; i < num; ++i, col += distance)
 		m_dinausor[i].setPos(col, row);
 
 	row -= laneDistance;
-	col = (((LEFT + 1) << 1) + carDistance) >> 1;
+	col = (((LEFT + 1) << 1) + distance) >> 1;
 	m_bird = new Bird[num];
-	for (int i = 0; i < num; ++i, col += carDistance)
+	for (int i = 0; i < num; ++i, col += distance)
 		m_bird[i].setPos(col, row);
 }
 void Game::exitGame(thread* t)
 {
-
 	system("cls");
 	is_running = false;
 	t->join();
@@ -129,3 +154,15 @@ void Game::updatePosAnimal() {
 		m_dinausor[i].move();
 	}
 };
+void Game::updateScore()
+{
+	GotoXY(125, 16);
+	cout << score;
+	highScore = max(highScore, score);
+	GotoXY(138, 23);
+	cout << highScore;
+}
+bool Game::isImpactPoint()
+{
+	return m_people->isImpact();
+}

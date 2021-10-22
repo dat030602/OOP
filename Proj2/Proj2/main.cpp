@@ -47,18 +47,24 @@ Game g(1);
 
 void runGame()
 {
+    int flashing = 0;
     while (g.IS_RUNNING())
     {
+        if (MOVING == 27)
+            break;
         if (!g.getPeople()->isDead()) //Nếu người vẫn còn sống
         {
             if (MOVING != ' ')
                 g.updatePosPeople(MOVING);//Cập nhật vị trí người theo thông tin từ main
+            g.updatePosVehicle();//Cập nhật vị trí xe
+            g.updatePosAnimal(); //Cập nhật vị trí 
+            g.drawGame(MOVING, flashing);
+            if (flashing == 60)
+                flashing = 0;
         }
         // Tạm khóa không cho di chuyển, chờ nhận phím từ hàm main
 
-        g.updatePosVehicle();//Cập nhật vị trí xe
-        g.updatePosAnimal(); //Cập nhật vị trí thú
-        g.drawGame(MOVING);
+        
         MOVING = ' ';
         if (g.getPeople()->isImpact(g.getTrucks(), g.NumOfEnemy(), true) ||
             g.getPeople()->isImpact(g.getCars(), g.NumOfEnemy(), false) ||
@@ -66,14 +72,15 @@ void runGame()
             g.getPeople()->isImpact(g.getDinausors(), g.NumOfEnemy(), false))
         {
             //đây chỉ là xử lý tạm thời, sẽ thêm hiệu ứng lúc thua ở đây
-            GotoXY(LEFT + (RIGHT - LEFT) / 2, TOP);
-            cout << "Dead";
+            g.getPeople()->dead();
         }
         if (g.getPeople()->isFinish()) {
             //đây chỉ là xử lý tạm thời, sẽ thêm hiệu ứng qua màn ở đây
-            GotoXY(LEFT + (RIGHT - LEFT) / 2, TOP);
-            cout << "Finish";
+            g.resetGame(g.nextLevel());
+            flashing = -1;
+            
         }
+        flashing++;
         Sleep(100);
 
     }
@@ -217,11 +224,11 @@ int menu() {
         }
         }
         press = toupper(_getch());
-        if (press == 'W')
+        if (press == 'W' || press == 72)
         {
             if (Choose != 1) Choose--;
         }
-        if (press == 'S')
+        else if (press == 'S' || press == 80)
         {
             if (Choose != 5) Choose++;
         }
@@ -250,13 +257,12 @@ int main()
     DisableResizeWindow();
     ShowScrollbar(0);
     Nocursortype();
-    //vẽ menu trước khi vào game (hiện tại là chưa làm)
-    // ....
 
     Loading();  //ms them
     system("cls");//ms them
     int choose = menu();//ms them
     int temp;//ms them
+    bool pause = false;
     while (1) {
         switch (choose)
         {
@@ -274,8 +280,18 @@ int main()
 
             GotoXY(70, 3);
             cout << "CROSSING STREET";
-            GotoXY(4, 14);
-            cout << "Menu: load, save...";
+            GotoXY(16, 14);
+            cout << "MENU";
+            GotoXY(10, 16);
+            cout << "N : New Game";
+            GotoXY(10, 18);
+            cout << "P : Pause/Resume Game ";
+            GotoXY(10, 20);
+            cout << "S : Save Game";
+            GotoXY(10, 22);
+            cout << "L : Load Game";
+            GotoXY(10, 24);
+            cout << "G : Setting";
             GotoXY(121, 14);
             cout << "Score";
             GotoXY(121, 22);
@@ -299,14 +315,34 @@ int main()
                 //tài liệu đồ án thầy có cho 1 số gợi ý về menu
                 //để dễ làm nên tui xóa thêm rồi
                 //menu: load, save, pause game hay gì đó sẽ thêm ở đây
-
                 if (MOVING == 27) {
                     choose = menu();
                 }
-
+                else if (MOVING == 'N') {
+                    g.resetGame(1);
+                }
+                else if (MOVING == 'P') {
+                    if (!pause)
+                    {
+                        pause = true;
+                        g.pauseGame(t1.native_handle());
+                    }
+                    else
+                    {
+                        pause = false;
+                        g.resumeGame(t1.native_handle());
+                    }
+                }
+                else if (MOVING == 'S') {
+                    //save game
+                }
+                else if (MOVING == 'L') {
+                    //load game
+                }
+                else if (MOVING == 'G') {
+                    //setting
+                }
             }
-            /*PauseGame(handle_t1);
-            choose = menu();*/
         }
               break;
         }
