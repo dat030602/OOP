@@ -39,16 +39,10 @@ public:
 	bool IS_RUNNING() { return is_running; };
 	bool IS_POINT() { return is_point; };
 	void clearGame();
-	void loadGame(istream);
-	void saveGame(istream);
-	void pauseGame(HANDLE t)
-	{
-		SuspendThread(t);
-	}
-	void resumeGame(HANDLE t)
-	{
-		ResumeThread(t);
-	}
+	//void loadGame(istream);
+	//void saveGame(istream);
+	void pauseGame(HANDLE t){SuspendThread(t);}
+	void resumeGame(HANDLE t){ResumeThread(t);}
 	void updatePosPeople(char key);
 	void updatePosVehicle();
 	void updatePosAnimal();

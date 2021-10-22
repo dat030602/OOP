@@ -125,16 +125,16 @@ void Game::clearGame()
 }
 void Game::updatePosPeople(char key)
 {
-	if (key == 'W' || key == 72)
+	if (key == 'W')
 		m_people->up();
 
-	else if (key == 'A' || key == 75)
+	else if (key == 'A')
 		m_people->left();
 
-	else if (key == 'S' || key == 80)
+	else if (key == 'S')
 		m_people->down();
 
-	else if (key == 'D' || key == 77)
+	else if (key == 'D')
 		m_people->right();
 };
 void Game::updatePosVehicle()

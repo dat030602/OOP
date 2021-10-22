@@ -78,7 +78,7 @@ void runGame()
             //đây chỉ là xử lý tạm thời, sẽ thêm hiệu ứng qua màn ở đây
             g.resetGame(g.nextLevel());
             flashing = -1;
-            
+            MOVING = 'F';
         }
         flashing++;
         Sleep(100);
@@ -94,42 +94,42 @@ void Loading()
     //SetConsoleOutputCP(65001);
     //Loading game
     srand(NULL);
-    GotoXY(56, 20);
+    GotoXY(73, 27);
     cout << "LOADING";
 
 
-    int i = 3;
-    GotoXY(26, i++);
+    int i = 10;
+    GotoXY(43, i++);
     cout << " $$$$$$\\                                           $$\\";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "$$  __$$\\                                         \\__ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "$$ /  \\__|  $$$$$$\\   $$$$$$\\   $$$$$$$\\  $$$$$$$\\ $$\\   $$$$$$$\\    $$$$$$\\";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "$$ |       $$  __$$\\ $$  __$$\\ $$  _____|$$  _____|$$ |  $$  __$$\\  $$  __$$\\";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "$$ |       $$ |  \\__|$$ / $$ | \\$$$$$$\\  \\$$$$$$\\  $$ |  $$ |  $$ |  $$ / $$ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "$$ |   $$\\ $$ |      $$ | $$ | \\____$$\\  \\____ $$\\ $$ |  $$ |  $$ |  $$ | $$ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "\\$$$$$$  | $$ |      \\$$$$$$ | $$$$$$$ | $$$$$$$  |$$ |  $$ |  $$ | \\$$$$$$$ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "\\______ / \\__|       \\______/ \\_______/ \\_______/ \\__|  \\__|  \\__ |  \\____$$ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "                                                                    $$\\   $$ |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "                                                                    \\$$$$$$  |";
-    GotoXY(26, i++);
+    GotoXY(43, i++);
     cout << "                                                                     \\______ /";
 
 
-    GotoXY(28, 25);
+    GotoXY(45, 32);
     //cout << "│";
     cout << char(179);
-    GotoXY(92, 25);
+    GotoXY(109, 32);
     //cout << "│";
     cout << char(179);
-    GotoXY(29, 25);
+    GotoXY(46, 32);
     for (int i = 29; i < 92; i++) {
         int a = rand() % 50;
         Sleep(a);
@@ -154,71 +154,71 @@ int menu() {
         {
         case 1:
         {
-            GotoXY(48, 15); textColor(228);
+            GotoXY(65, 15); textColor(228);
             cout << ">>    N_E_W   G_A_M_E    <<";
-            GotoXY(48, 17); textColor(232);
+            GotoXY(65, 17); textColor(232);
             cout << "     L_O_A_D   G_A_M_E     ";
-            GotoXY(48, 19); textColor(232);
+            GotoXY(65, 19); textColor(232);
             cout << "    R_A_N_K   B_O_A_R_D    ";
-            GotoXY(48, 21); textColor(232);
+            GotoXY(65, 21); textColor(232);
             cout << "     I_N_T_R_O_D_U_C_E     ";
-            GotoXY(48, 23); textColor(232);
+            GotoXY(65, 23); textColor(232);
             cout << "     E_X_I_T   G_A_M_E     ";
             break;
         }
         case 2:
         {
-            GotoXY(48, 15); textColor(232);
+            GotoXY(65, 15); textColor(232);
             cout << "      N_E_W   G_A_M_E      ";
-            GotoXY(48, 17); textColor(228);
+            GotoXY(65, 17); textColor(228);
             cout << ">>   L_O_A_D   G_A_M_E   <<";
-            GotoXY(48, 19); textColor(232);
+            GotoXY(65, 19); textColor(232);
             cout << "    R_A_N_K   B_O_A_R_D    ";
-            GotoXY(48, 21); textColor(232);
+            GotoXY(65, 21); textColor(232);
             cout << "     I_N_T_R_O_D_U_C_E     ";
-            GotoXY(48, 23); textColor(232);
+            GotoXY(65, 23); textColor(232);
             cout << "     E_X_I_T   G_A_M_E     ";
             break;
         }
         case 3:
         {
-            GotoXY(48, 15); textColor(232);
+            GotoXY(65, 15); textColor(232);
             cout << "      N_E_W   G_A_M_E      ";
-            GotoXY(48, 17); textColor(232);
+            GotoXY(65, 17); textColor(232);
             cout << "     L_O_A_D   G_A_M_E     ";
-            GotoXY(48, 19); textColor(228);
+            GotoXY(65, 19); textColor(228);
             cout << ">>  R_A_N_K   B_O_A_R_D  <<";
-            GotoXY(48, 21); textColor(232);
+            GotoXY(65, 21); textColor(232);
             cout << "     I_N_T_R_O_D_U_C_E     ";
-            GotoXY(48, 23); textColor(232);
+            GotoXY(65, 23); textColor(232);
             cout << "     E_X_I_T   G_A_M_E     ";
             break;
         }
         case 4:
         {
-            GotoXY(48, 15); textColor(232);
+            GotoXY(65, 15); textColor(232);
             cout << "      N_E_W   G_A_M_E      ";
-            GotoXY(48, 17); textColor(232);
+            GotoXY(65, 17); textColor(232);
             cout << "     L_O_A_D   G_A_M_E     ";
-            GotoXY(48, 19); textColor(232);
+            GotoXY(65, 19); textColor(232);
             cout << "    R_A_N_K   B_O_A_R_D    ";
-            GotoXY(48, 21); textColor(228);
+            GotoXY(65, 21); textColor(228);
             cout << ">>   I_N_T_R_O_D_U_C_E   <<";
-            GotoXY(48, 23); textColor(232);
+            GotoXY(65, 23); textColor(232);
             cout << "     E_X_I_T   G_A_M_E     ";
             break;
         }
         case 5:
         {
-            GotoXY(48, 15); textColor(232);
+            GotoXY(65, 15); textColor(232);
             cout << "      N_E_W   G_A_M_E      ";
-            GotoXY(48, 17); textColor(232);
+            GotoXY(65, 17); textColor(232);
             cout << "     L_O_A_D   G_A_M_E     ";
-            GotoXY(48, 19); textColor(232);
+            GotoXY(65, 19); textColor(232);
             cout << "    R_A_N_K   B_O_A_R_D    ";
-            GotoXY(48, 21); textColor(232);
+            GotoXY(65, 21); textColor(232);
             cout << "     I_N_T_R_O_D_U_C_E     ";
-            GotoXY(48, 23); textColor(228);
+            GotoXY(65, 23); textColor(228);
             cout << ">>   E_X_I_T   G_A_M_E   <<";
             break;
         }
