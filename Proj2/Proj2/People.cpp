@@ -44,7 +44,7 @@ void People::clearPath(char key)
 {
 	int i = 0;
 	int x1 = mX, y1 = mY - height + 1;
-	if (key == 'A' || key == 75)
+	if (key == 'A')
 	{
 		for (; i < width; i++)
 		{
@@ -52,7 +52,7 @@ void People::clearPath(char key)
 			cout << " ";
 		}
 	}
-	else if (key == 'W' || key == 72)
+	else if (key == 'W')
 	{
 		for (; i < height; i++)
 		{
@@ -60,7 +60,7 @@ void People::clearPath(char key)
 			cout << " ";
 		}
 	}
-	else if (key == 'S' || key == 80)
+	else if (key == 'S')
 	{
 		for (; i < height; i++)
 		{
@@ -68,7 +68,7 @@ void People::clearPath(char key)
 			cout << " ";
 		}
 	}
-	else if (key == 'D' || key == 77)
+	else if (key == 'D')
 	{
 		for (; i < width; i++)
 		{
@@ -146,7 +146,7 @@ bool People::isImpact(const Animal* obj, int num, bool animal)
 		w = Bird::width;
 	else
 		w = Dinausor::width;
-	if (y <= mY +- 2 && y > mY - People::height)
+	if (y <= mY + 2 && y > mY - People::height)
 	{
 		for (int i = 0; i < num; i++)
 		{

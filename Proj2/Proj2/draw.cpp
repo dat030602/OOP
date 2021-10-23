@@ -4,10 +4,13 @@ void drawConsole(int x, int y)
     int y1 = y;
     for (int i = 0; i < 7; i++)
     {
-        GotoXY(x, y1);
-        y1 += 4;
-        for (int i = 0; i < 70; i++)
+        //GotoXY(x, y1);
+        for (int j = 0; j < 70; j++)
+        {
+            GotoXY(x + j + 1, y1);
             cout << (char)205;
+        }
+        y1 += 4;
     }
     y1 = y;
     for (int i = 0; i < 25; i++)
@@ -48,7 +51,6 @@ void drawMenu(int x, int y)
     int y2[] = { 0,8, 12};
     //ngang
     int y1 = y;
-    GotoXY(x + 1, y1);
     for (int i = 0; i < 3; i++)
     {
         GotoXY(x + 1, y1 + y2[i]);
@@ -133,5 +135,14 @@ void drawMenu(int x, int y)
             GotoXY(3 + 30, i + 1);
             cout << (char)186;
         }
+    }
+}
+void clearConsole(int x, int y)
+{
+    int y1 = y;
+    for (int i = y; i < 35; i++)
+    {
+        GotoXY(x, i);
+        cout << "                                                                            ";
     }
 }

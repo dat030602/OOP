@@ -22,6 +22,8 @@ Game::Game(int level)
 void Game::drawGame(char key, int &flashing)
 {
 	int i;
+	GotoXY(125, 23);
+	cout << m_currentLevel;
 	if (isImpactPoint())
 	{
 		flashing = 0;
@@ -66,12 +68,12 @@ Game::~Game()
 void Game::resetGame(int level)
 {
 	clearGame();
-	GotoXY(123, 23);
 	m_currentLevel = level;
-	cout << level;
 	if (level > 1)
 		score += 20;
-	updateScore();
+	if (level == 1)
+		score = 0;
+	//updateScore();
 	is_running = true;
 	m_people = new People((RIGHT + LEFT) / 2, BOTTOM);
 
@@ -157,6 +159,8 @@ void Game::updatePosAnimal() {
 void Game::updateScore()
 {
 	GotoXY(125, 16);
+	cout << "   ";
+	GotoXY(125, 16);
 	cout << score;
 	highScore = max(highScore, score);
 	GotoXY(138, 23);
@@ -165,4 +169,141 @@ void Game::updateScore()
 bool Game::isImpactPoint()
 {
 	return m_people->isImpact();
+}
+void Game::saveGame(string file)
+{
+	int x, y;
+	ofstream fi;
+	fi.open(file);
+	fi << m_currentLevel << endl;
+	for (int i = 0; i < num; i++)
+	{
+		x = m_truck[i].X();
+		y = m_truck[i].Y();
+		fi << x << " " << y << " ";
+	}
+	fi << endl;
+	for (int i = 0; i < num; i++)
+	{
+		x = m_car[i].X();
+		y = m_car[i].Y();
+		fi << x << " " << y << " ";
+	}
+	fi << endl;
+	for (int i = 0; i < num; i++)
+	{
+		x = m_dinausor[i].X();
+		y = m_dinausor[i].Y();
+		fi << x << " " << y << " ";
+	}
+	fi << endl;
+	for (int i = 0; i < num; i++)
+	{
+		x = m_bird[i].X();
+		y = m_bird[i].Y();
+		fi << x << " " << y << " ";
+	}
+	fi << endl;
+	x = m_people->X();
+	y = m_people->Y();
+	fi << x << " " << y << endl;
+	fi << score << " " << highScore;
+	fi.close();
+}
+void Game::loadGame(string file)
+{
+	int x, y;
+	clearGame();
+	fstream fi;
+	fi.open(file);
+	fi >> m_currentLevel;
+
+	int interval = (m_currentLevel - 1) / 3 + 1;
+	int numOfVehicles = interval + 1;// số lượng xe
+	int distance = (RIGHT - LEFT - 1) / numOfVehicles; // khoảng cách xe
+	int laneDistance = 4; // khoảng cách giữa 2 làn
+
+	num = numOfVehicles;
+	m_truck = new Truck[num];
+	for (int i = 0; i < num; ++i)
+	{
+		fi >> x >> y;
+		m_truck[i].setPos(x, y);
+	}
+
+	m_car = new Car[num];
+	for (int i = 0; i < num; ++i)
+	{
+		fi >> x >> y;
+		m_car[i].setPos(x, y);
+	}
+
+	m_dinausor = new Dinausor[num];
+	for (int i = 0; i < num; ++i)
+	{
+		fi >> x >> y;
+		m_dinausor[i].setPos(x, y);
+	}
+
+	m_bird = new Bird[num];
+	for (int i = 0; i < num; ++i)
+	{
+		fi >> x >> y;
+		m_bird[i].setPos(x, y);
+	}
+
+	is_running = true;
+	fi >> x >> y;
+	m_people = new People(x, y);
+	fi >> score >> highScore;
+	fi.close();
+	updateScore();
+	m_people->setPos();
+}
+void Game::effectNextLevelDead()
+{
+	int y2[] = { 0,4 };
+	//ngang
+	int y1 = 28;
+	int x = 125;
+	for (int i = 0; i < 2; i++)
+	{
+		GotoXY(x + 1, y1 + y2[i]);
+		for (int j = 0; j < 20; j++)
+			cout << (char)205;
+	}
+	//doc
+	GotoXY(x, y1);
+	cout << (char)201;
+	GotoXY(x + 20, y1);
+	cout << (char)187;
+
+	GotoXY(x, y1 + y2[1]);
+	cout << (char)200;
+	GotoXY(x + 20, y1 + y2[1]);
+	cout << (char)188;
+
+	for (int i = y1; i < y1 + y2[1]; i++)
+	{
+		if (i + 1 != y1 && i + 1 != y1 + y2[1])
+		{
+			GotoXY(x, i + 1);
+			cout << (char)186;
+			GotoXY(x + 20, i + 1);
+			cout << (char)186;
+		}
+	}
+}
+void Game::clearEffect()
+{
+	int y2[] = { 0,4 };
+	//ngang
+	int y1 = 28;
+	int x = 125;
+	for (int i = 0; i < 6; i++)
+	{
+		GotoXY(x, y1 + i);
+		for (int j = 0; j < 22; j++)
+			cout << " ";
+	}
 }
