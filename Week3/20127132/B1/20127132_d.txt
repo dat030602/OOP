@@ -1,0 +1,6 @@
+Thứ tự gọi:
+1. Gọi phương thức tạo lập với 2 tham số là a có giá trị là "Dat Thanh" và 800
+2. Phương thức tạo lập sao chép a cho b;
+3. Sửa họ tên bằng cách gọi phương thức setter
+4. Tạo vòng lặp, tạo lớp NhanVien mới là clone có giá trị của b, sửa họ tên theo đúng yêu cầu dựa trên phương thức getter, gọi phương thức hủy của clone.
+5. Kết thúc vòng lặp, gọi phương thức hủy của a và b

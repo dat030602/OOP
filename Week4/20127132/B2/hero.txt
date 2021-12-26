@@ -1,0 +1,120 @@
+Aatrox
+737
+273
+14
+The Darkin Blade
+9
+Infernal Chains
+18
+Umbral Dash
+13
+World Ender
+16
+Anivia
+472
+258
+12
+Flash Frost
+13
+Crystallize
+18
+Frostbite
+9
+Glacial Storm
+16
+Corki
+591
+387
+15
+Phosphorus Bomb
+9
+Valkyrie
+18
+Gatling Gun
+13
+Missile Barrage
+16
+Cho'Gath
+988
+479
+18
+Rupture
+13
+Feral Scream
+18
+Vorpal Spikes
+9
+Feast
+16
+Draven
+425
+320
+25
+Spinning Axe
+9
+Blood Rush
+13
+Stand Aside
+18
+Whirling Death
+16
+Dr. Mundo
+987
+0
+16
+Infected Bonesaw
+9
+Headrt Zapper
+18
+Blunt Force Trauma
+13
+Maximum Dosage
+16
+Ekko
+865
+500
+31
+Timewinder
+9
+Parallel Convergence
+18
+Phase Dive
+13
+Chronobreak
+16
+Ezreal
+456
+321
+18
+Mystic Shot
+9
+Essence Flux
+18
+Arcane Shift
+13
+Trueshot Barrage
+16
+Fiora
+777
+608
+13
+Lunge
+9
+Riposte
+18
+Bladework
+13
+Grand Challenge
+16
+Fizz
+633
+790
+31
+Urchin strike
+18
+Seastone Trident
+13
+Playful / Trickster
+9
+Chum the Water
+16
